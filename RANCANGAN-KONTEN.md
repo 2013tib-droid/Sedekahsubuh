@@ -2,6 +2,7 @@
 
 > Format: **1 tema = 3 post (triptych)** yang menyatu jadi satu baris di grid.
 > Frekuensi: **3 triptych per pekan (Senin, Rabu, Jumat — Jumat wajib)** + 2 Reels (Selasa & Kamis) + Story harian. Triptych diunggah setelah Subuh.
+> Threads: utas harian yang memakai ulang isi triptych — lihat **bagian 11**.
 > Nuansa: islami, sedekah, kebaikan, hangat, cahaya pagi.
 
 ---
@@ -367,6 +368,7 @@ Maksimal 150 kata. Jangan mengarang dalil tambahan di luar yang saya berikan.
    - Post tengah: teks dalil + terjemah lengkap
    - Post kiri (paling atas di feed): hook + "Lihat 2 post sebelumnya untuk dalil & ajakannya"
 3. Bagikan post kiri ke Story + stiker link wadahqris.id.
+4. Posting versi utas di Threads (bagian 11b).
 
 **Selasa & Kamis:** upload Reels yang sudah disiapkan (Kamis sebaiknya malam, ±19.30 WIB — malam Jumat).
 
@@ -453,6 +455,109 @@ Semoga Allah menerima setiap kebaikan kita. Aamiin.
 - Ajak interaksi: pertanyaan di P3 ("Aamiin-kan di komentar", "Tag teman").
 - **Transparansi** (triptych Minggu opsional / Reels dokumentasi) membangun kepercayaan untuk akun donasi — tampilkan bukti penyaluran bila ada.
 - Pastikan QRIS/akun penerima donasi jelas identitas lembaganya.
+
+---
+
+## 11. Threads
+
+Threads memakai akun Instagram yang sama (@wadahqris.id), tapi cara mainnya beda: **teks dan obrolan lebih penting daripada gambar**, tidak ada grid, dan link di dalam post bisa diklik. Jadi isi triptych tidak disalin mentah, tapi diolah jadi utas pendek bernada santai — seperti ngobrol dengan teman selepas Subuh.
+
+### 11a. Profil
+
+- Nama & foto sama dengan Instagram.
+- Bio satu kalimat nilai, misalnya: *Pengingat sedekah setiap Subuh 🌅 · Berbagi lebih mudah lewat QRIS* + link wadahqris.id.
+- **Jangan** aktifkan bagi-otomatis setiap post IG ke Threads tanpa diubah — hasilnya terasa seperti iklan.
+
+### 11b. Triptych → utas 3 bagian (Senin, Rabu, Jumat)
+
+Formula Hook → Dalil → Aksi langsung jadi utas: post pertama, lalu **balas post sendiri** untuk bagian 2 dan 3.
+
+```
+(1/3)  [Hook P1] + 1 kalimat yang bikin penasaran. Boleh 1 gambar panel dari triptych.
+(2/3)  [Dalil P2]: terjemahan + sumber (QS/HR). Teks Arab tetap dari sumber resmi.
+(3/3)  [Aksi P3] + link QRIS wadahqris.id + 1 pertanyaan penutup.
+```
+
+Contoh (#02):
+> **(1/3)** Sedekah paling ringan ada di wajahmu. Tidak perlu uang, tidak perlu antre. 🙂
+> **(2/3)** Rasulullah ﷺ bersabda: "Senyummu di hadapan saudaramu adalah sedekah bagimu." (HR. Tirmidzi 1956)
+> **(3/3)** Tantangan hari ini: senyumi 3 orang yang kamu temui. Siapa yang ikut? 👇
+
+Di web, tombol **Salin utas Threads** di setiap kartu kalender sudah menyusun ketiga bagian ini dari teks P1/P2/P3. Rapikan sedikit sebelum posting (terutama dalil yang masih berupa ringkasan).
+
+**Topic tag** — Threads hanya membaca **1 tag per post**, pilih yang paling pas:
+- Senin: *Sedekah* · Rabu: *Kebaikan* · Jumat: *Jumat Berkah*
+
+### 11c. Jadwal Threads
+
+| Hari | Threads | Waktu |
+|---|---|---|
+| Senin, Rabu, Jumat | Utas versi triptych hari itu (11b) | Setelah upload IG, 05.30–06.30 WIB |
+| Selasa | Pertanyaan pancingan (11d) | 12.00 atau 19.30 WIB |
+| Kamis | Pengingat malam Jumat (11e) | 19.30 WIB |
+| Sabtu | Polling (11f) | Pagi atau 19.30 WIB |
+| Minggu (opsional) | Laporan penyaluran / cerita di balik layar — **hanya jika ada** | Bebas |
+| Setiap hari | **15 menit membalas** post akun lain (11g) | Kapan saja |
+
+Tidak ada urusan grid di Threads, jadi tidak perlu kelipatan 3. Cukup 1–2 post per hari.
+
+### 11d. Pertanyaan Selasa (dipakai bergiliran)
+
+- Sedekah terkecil apa yang pernah kamu lakukan, tapi paling berkesan?
+- Siapa orang yang paling mengajarkanmu tentang berbagi? Ceritakan sedikit tentang dia.
+- Lebih mudah sedekah diam-diam atau terang-terangan? Kenapa?
+- Kalau hari ini hanya bisa satu kebaikan kecil, apa yang akan kamu pilih?
+- Pernah dibantu orang asing? Ceritakan, siapa tahu bikin orang lain ikut tergerak.
+- Apa yang paling bikin kamu susah istiqamah sedekah? Yuk saling kasih tips.
+- Amalan pagi apa yang paling kamu jaga selepas Subuh?
+- Satu doa yang selalu kamu baca untuk rezeki — apa?
+- Menurutmu, sedekah paling dibutuhkan di sekitarmu saat ini apa?
+- Kebaikan apa yang kamu terima minggu ini dan belum sempat kamu syukuri?
+
+### 11e. Pengingat Kamis malam (dipakai bergiliran)
+
+- Besok Jumat. Sudah siapkan sedekah Jumat-mu? Sedikit tapi rutin lebih dicintai Allah. 🤲
+- Checklist malam Jumat: ☐ Al-Kahfi ☐ Shalawat ☐ Niat sedekah besok pagi. Mana yang sudah? 👇
+- Malam Jumat, waktunya memperbanyak shalawat. Tulis "Allahumma shalli 'ala Muhammad" di balasan.
+- Pengingat lembut: sedekah Jumat tidak harus besar. Rp1.000 yang ikhlas tetap bernilai.
+- Besok hari terbaik dalam sepekan. Satu kebaikan apa yang ingin kamu lakukan besok?
+
+### 11f. Polling Sabtu (dipakai bergiliran)
+
+Format: pertanyaan — pilihan dipisah `/` (Threads membatasi 4 pilihan, teks pilihan pendek).
+
+- Kamu biasa sedekah lewat apa? — Kotak masjid / QRIS / Transfer / Langsung
+- Kapan paling sering sedekah? — Setelah Subuh / Jumat / Saat gajian / Kapan saja
+- Sedekah favoritmu? — Makanan / Uang / Tenaga / Ilmu
+- Lebih suka sedekah... — Diam-diam / Bareng teman / Lewat lembaga
+- Sudah rutin sedekah harian? — Sudah / Kadang-kadang / Mau mulai
+- Amalan Jumat yang paling kamu jaga? — Al-Kahfi / Shalawat / Sedekah / Semua
+- Nominal sedekah harian yang realistis buatmu? — Rp1.000 / Rp5.000 / Rp10.000+ / Tidak tentu
+- Konten apa yang paling membantu? — Dalil / Kisah sahabat / Tips praktis / Laporan donasi
+
+### 11g. Kebiasaan yang paling berpengaruh
+
+- **Balas dulu, baru posting.** ±15 menit sehari membalas post akun dakwah, kajian, UMKM, dan pengguna QRIS dengan balasan yang bermakna (bukan cuma "aamiin"). Akun baru di Threads tumbuh lebih cepat dari balasan daripada dari post sendiri.
+- **Akhiri post dengan pertanyaan** supaya orang ikut membalas, lalu balas setiap balasan yang masuk di jam pertama.
+- **Nada lebih santai** daripada caption IG. Kalimat pendek, satu gagasan per post.
+- **Ajakan donasi secukupnya**: kira-kira 1 dari 4 post saja yang berisi ajakan QRIS, sisanya pengingat, cerita, dan obrolan.
+
+**Yang dihindari:**
+- Terpancing debat khilafiyah atau politik di balasan. Jawab sopan sekali, lalu biarkan.
+- Menyalin caption IG lengkap dengan 10 hashtag — di Threads hanya 1 tag yang terbaca.
+- Membagikan foto penerima donasi tanpa izin (sama seperti aturan Reels dokumentasi).
+
+### 11h. Prompt utas (untuk ChatGPT/Claude)
+
+```
+Kamu adalah penulis akun Threads dakwah @wadahqris.id (donasi & berbagi via QRIS).
+Ubah tema "[TEMA]" dengan dalil "[DALIL + SUMBER]" menjadi utas Threads 3 bagian
+berbahasa Indonesia, nada santai dan hangat, tidak menggurui.
+(1/3) hook maksimal 2 kalimat, (2/3) dalil + sumber apa adanya, (3/3) satu aksi
+kecil hari ini + ajakan sedekah via QRIS di wadahqris.id + satu pertanyaan penutup.
+Setiap bagian maksimal 300 karakter. Tanpa hashtag. Jangan mengarang dalil tambahan
+di luar yang saya berikan.
+```
 
 ---
 

@@ -133,6 +133,14 @@
     padding: 3px 8px; border-radius: 6px;
   }
 
+  .thread-parts { display: grid; gap: 8px; margin-top: 10px; }
+  .thread-part {
+    background: var(--surface-soft); border-radius: 10px; padding: 10px 12px;
+    display: flex; gap: 10px; align-items: flex-start; justify-content: space-between;
+  }
+  .thread-part .txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .93rem; min-width: 0; }
+  .thread-part button.copy-mini { margin-top: 0; flex: 0 0 auto; }
+
   .week-block { margin-bottom: 26px; }
   .week-block > h2 { font-size: 1.25rem; margin: 0 0 4px; }
   .week-block > .muted { margin: 0 0 12px; }
@@ -197,7 +205,7 @@
 <header class="top">
   <div class="wrap">
     <h1>Sedekah Subuh · @wadahqris.id</h1>
-    <p>Rancangan konten Instagram: triptych Senin–Rabu–Jumat, Reels, dan Story</p>
+    <p>Rancangan konten Instagram &amp; Threads: triptych Senin–Rabu–Jumat, Reels, Story, dan utas</p>
     <nav class="tabs" role="tablist">
       <button role="tab" data-tab="hari-ini" aria-selected="true">Hari Ini</button>
       <button role="tab" data-tab="kalender" aria-selected="false">Kalender</button>
@@ -296,6 +304,13 @@
     const m = md.slice(i).match(/```[^\n]*\n([\s\S]*?)```/);
     return m ? m[1].trim() : "";
   }
+  // Butir "- ..." di bawah sebuah heading, sampai heading berikutnya.
+  function extractList(md, heading) {
+    const i = md.indexOf(heading);
+    if (i < 0) return [];
+    const body = md.slice(i + heading.length).split(/\n#{2,3} /)[0];
+    return [...body.matchAll(/^- (.+)$/gm)].map(m => m[1].trim());
+  }
   function moodLight(prompts, weekNo) {
     // Bagian 6c: kalimat pencahayaan per rentang pekan.
     const m = prompts.moods.find(x => weekNo >= x.from && weekNo <= x.to);
@@ -320,6 +335,26 @@
   }
   const dalil = it => plain(it.P2);
   const captionPrompt = (it, P) => P.caption.replace("[TEMA]", it.title).replace("[DALIL + SUMBER]", dalil(it));
+  const threadsPrompt = (it, P) => P.threads.replace("[TEMA]", it.title).replace("[DALIL + SUMBER]", dalil(it));
+  const TOPIC = { Senin: "Sedekah", Rabu: "Kebaikan", Jumat: "Jumat Berkah" };
+
+  // Bagian 11b: utas 3 bagian. Catatan produksi di P3 ("+ mockup…", "(sesuaikan…)") dibuang.
+  function threadParts(it) {
+    const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+    let d = dalil(it);
+    const m = d.match(/^((?:QS|HR)\.[^—]+?) — (.+)$/);
+    if (m) d = `${cap(m[2])} (${m[1]})`;
+    let aksi = plain(it.P3.replace(/\s+\+\s[^*]*$/, "").replace(/\s*\([^)]*\)\s*$/, ""))
+      .replace(/di kolom komentar/g, "di balasan");
+    const tail = /QRIS/i.test(aksi) ? "" : "\n\n🤲 Sedekah subuh lewat QRIS: wadahqris.id";
+    const ask = /\?$|balasan/.test(aksi) ? "" : "\n\nAamiin-kan di balasan 👇";
+    return [
+      `${plain(it.P1)}\n\nDalilnya di bawah 👇 (1/3)`,
+      `📖 ${d}\n\n(2/3)`,
+      `✨ ${aksi}${tail}${ask} (3/3)`,
+    ];
+  }
+  const threadText = it => threadParts(it).join("\n\n———\n\n");
   const reelsPrompt = (it, P) => P.reels.replace("[TEMA]", it.title).replace("[DALIL + SUMBER]", dalil(it));
 
   // ---------- Kartu triptych ----------
@@ -347,6 +382,8 @@
           <button class="btn primary" data-copy="${esc(imagePrompt(it, P))}" data-what="Prompt gambar">Salin prompt gambar</button>
           <button class="btn" data-copy="${esc(captionPrompt(it, P))}" data-what="Prompt caption">Salin prompt caption</button>
           <button class="btn" data-copy="${esc(reelsPrompt(it, P))}" data-what="Prompt caption Reels">Salin prompt Reels</button>
+          <button class="btn" data-copy="${esc(threadText(it))}" data-what="Utas Threads">Salin utas Threads</button>
+          ${P.threads ? `<button class="btn" data-copy="${esc(threadsPrompt(it, P))}" data-what="Prompt utas">Salin prompt utas</button>` : ""}
         </div>
       </div>`;
   }
@@ -427,6 +464,7 @@
           <li>Bagikan post kiri ke Story + stiker link wadahqris.id.</li>
         </ol></div>`;
       html += tripCard(it, P, { today: true });
+      html += threadsDayCard(it);
     } else if (dow === 2 || dow === 4) {
       const src = byNo(tripNo(weekIdx, dow === 2 ? 0 : 1));
       html += `<div class="card"><p class="eyebrow">Upload Reels · ${dow === 2 ? "12.00 atau 19.30" : "19.30 (malam Jumat)"} WIB</p>
@@ -436,6 +474,9 @@
           <li>Pilih sampul yang ada judulnya.</li>
         </ol></div>`;
       html += tripCard(src, P, { note: "Bahan Reels hari ini:" });
+      html += dow === 2
+        ? threadsListCard("pertanyaan pancingan", "12.00 atau 19.30 WIB", P.ask, weekIdx, "Balas setiap jawaban yang masuk di jam pertama.")
+        : threadsListCard("pengingat malam Jumat", "19.30 WIB", P.kamis, weekIdx, "");
     } else if (dow === 0) {
       html += `<div class="card"><p class="eyebrow">Hari produksi (±1,5 jam) — siapkan pekan depan</p>
         <ol class="steps">
@@ -445,13 +486,33 @@
           <li>Buat 2 Reels dari panorama yang sama, simpan di draf.</li>
           <li>Siapkan caption (tombol “Salin prompt caption”).</li>
         </ol></div>`;
+      html += `<div class="card"><p class="eyebrow">Threads (opsional)</p><p class="small" style="margin:0">Laporan penyaluran atau cerita di balik layar — <b>hanya jika ada</b>.</p>${REPLY_HABIT}</div>`;
       html += [0, 1, 2].map(s => tripCard(byNo(tripNo(weekIdx + 1, s)), P)).join("");
     } else {
-      html += `<div class="card"><p style="margin:0">Hari Sabtu: cukup Story harian (doa pagi, pengingat sedekah subuh, stiker link QRIS). Besok hari produksi.</p></div>`;
+      html += `<div class="card"><p style="margin:0">Hari Sabtu: Story harian (doa pagi, pengingat sedekah subuh, stiker link QRIS) dan polling di Threads. Besok hari produksi.</p></div>`;
+      html += threadsListCard("polling", "pagi atau 19.30 WIB", P.poll, weekIdx,
+        "Buat sebagai polling: pertanyaan di teks, pilihan (setelah tanda —, dipisah /) di opsi polling.");
     }
     html += `<div class="card">${settings}</div>`;
     el.innerHTML = html;
     bindSettings();
+  }
+  const REPLY_HABIT = `<p class="small muted" style="margin:10px 0 0">Jangan lupa ±15 menit membalas post akun lain — akun baru di Threads tumbuh dari balasan.</p>`;
+  function threadsDayCard(it) {
+    const parts = threadParts(it).map((t, i) => `
+      <div class="thread-part"><div class="txt">${esc(t)}</div>
+        <button class="copy-mini" data-copy="${esc(t)}" data-what="Bagian ${i + 1}/3">Salin</button></div>`).join("");
+    return `<div class="card"><p class="eyebrow">Threads · setelah upload IG</p>
+      <p class="small" style="margin:0">Posting bagian 1, lalu <b>balas post sendiri</b> dengan bagian 2 dan 3. Topic tag: <b>${esc(TOPIC[it.day] || "Sedekah")}</b>. Rapikan dalil yang masih berupa ringkasan.</p>
+      <div class="thread-parts">${parts}</div>${REPLY_HABIT}</div>`;
+  }
+  function threadsListCard(title, when, list, weekIdx, hint) {
+    if (!list.length) return "";
+    const t = list[((weekIdx % list.length) + list.length) % list.length];
+    return `<div class="card"><p class="eyebrow">Threads · ${title} · ${when}</p>
+      <div class="thread-part"><div class="txt">${esc(plain(t))}</div>
+        <button class="copy-mini" data-copy="${esc(plain(t))}" data-what="Teks Threads">Salin</button></div>
+      ${hint ? `<p class="small muted" style="margin:10px 0 0">${hint}</p>` : ""}${REPLY_HABIT}</div>`;
   }
   function todayHeadline(dow) {
     return {
@@ -461,12 +522,12 @@
       3: "Triptych Rabu",
       4: "Reels malam Jumat",
       5: "Triptych Jumat ✅ wajib",
-      6: "Story saja",
+      6: "Story + polling Threads",
     }[dow];
   }
   function weekStrip(dow) {
     const order = [1, 2, 3, 4, 5, 6, 0];
-    const what = { 1: "Triptych", 2: "Reels", 3: "Triptych", 4: "Reels", 5: "Triptych", 6: "Story", 0: "Produksi" };
+    const what = { 1: "Triptych", 2: "Reels", 3: "Triptych", 4: "Reels", 5: "Triptych", 6: "Polling", 0: "Produksi" };
     return `<div class="week-grid">${order.map(d => `
       <div class="${d === dow ? "now" : ""} ${[1, 3, 5].includes(d) ? "trip" : ""}"><b>${DAY_NAMES[d].slice(0, 3)}</b>${what[d]}</div>`).join("")}</div>`;
   }
@@ -551,6 +612,10 @@
         master: extractCode(md, "### 6a."),
         caption: extractCode(md, "### 6d."),
         reels: extractCode(md, "### 8e."),
+        threads: extractCode(md, "### 11h."),
+        ask: extractList(md, "### 11d."),
+        kamis: extractList(md, "### 11e."),
+        poll: extractList(md, "### 11f."),
         moods: parseMoods(md),
       };
       if (!ALL.length) throw new Error("Kalender tidak ditemukan di " + SRC);
