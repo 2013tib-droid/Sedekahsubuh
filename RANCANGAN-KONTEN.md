@@ -44,7 +44,7 @@ Setiap triptych punya **satu latar panorama yang menyambung**, dengan peran pane
 - **Panel 2 – Dalil**: teks Arab + terjemahan + sumber (QS/HR), semuanya dibuat ChatGPT. Objek utama foto (lentera, mushaf, kurma) diletakkan di sini.
 - **Panel 3 – Aksi**: 1 langkah konkret hari ini + bar bawah "WADAHQRIS.ID · Berbagi kebaikan jadi lebih mudah dengan QRIS".
 
-Supaya tiap post juga enak dilihat **sendiri-sendiri** di feed (bukan cuma di grid), tiap panel wajib punya teks yang bisa berdiri sendiri, dan caption ketiganya boleh sama.
+Supaya tiap post juga enak dilihat **sendiri-sendiri** di feed (bukan cuma di grid), tiap panel wajib punya teks yang bisa berdiri sendiri, dan **caption ketiganya dibedakan** (kanan lengkap, tengah dalil, kiri hook — prompt 6e).
 
 ---
 
@@ -372,15 +372,41 @@ Ejaan bahasa Indonesia dan teks Arab harus persis seperti langkah 1.
 
 Setelah gambar jadi, **cocokkan teks Arab di gambar dengan lafaz yang ditulis di chat** (huruf yang hilang/terbalik paling sering terjadi di sini). Kalau ada yang salah, minta: *"Perbaiki hanya teks Arabnya, bagian lain jangan diubah."*
 
-### 6e. Prompt caption (untuk ChatGPT/Claude)
+### 6e. Prompt caption — 3 caption sekaligus (untuk ChatGPT/Claude)
+
+Tiap post triptych punya **caption sendiri**, dibuat sekali jalan dengan satu prompt (tombol *Salin prompt caption* di web sudah mengisi semua `[...]` dari kalender, jadi berlaku untuk semua 30 triptych):
+
+- **Post kanan** (Panel 3 · Aksi, diunggah pertama): caption lengkap + ajakan QRIS.
+- **Post tengah** (Panel 2 · Dalil): terjemahan dalil lengkap + sumber dan penjelasan singkat.
+- **Post kiri** (Panel 1 · Hook, diunggah terakhir, paling atas di feed): hook + ajakan melihat 2 post sebelumnya.
 
 ```
 Kamu adalah copywriter akun Instagram dakwah @wadahqris.id (donasi & berbagi via
-QRIS). Tulis caption Instagram berbahasa Indonesia, hangat dan tidak menggurui,
-untuk triptych bertema: "[TEMA]", dalil: "[DALIL + SUMBER]".
-Struktur: 1 kalimat hook, 3-4 kalimat renungan, 1 ajakan aksi kecil hari ini,
-ajakan sedekah via QRIS di link bio, doa singkat penutup, lalu 10 hashtag.
-Maksimal 150 kata. Jangan mengarang dalil tambahan di luar yang saya berikan.
+QRIS). Tulis 3 caption Instagram berbahasa Indonesia, hangat dan tidak menggurui,
+untuk 1 triptych (3 post yang menyambung) bertema: "[TEMA]".
+Dalil: [DALIL + SUMBER]
+Hook (panel kiri): "[HOOK]"
+Aksi (panel kanan): "[AKSI]"
+
+Setiap caption harus bisa dibaca sendiri, dan kalimatnya tidak boleh sama
+antar caption. Beri judul CAPTION KANAN, CAPTION TENGAH, CAPTION KIRI.
+
+CAPTION KANAN (post aksi, maks. 150 kata): 1 kalimat hook, 3-4 kalimat
+renungan, aksi di atas sebagai ajakan kecil hari ini, ajakan sedekah via QRIS
+di link bio, doa singkat penutup, lalu 10 hashtag.
+
+CAPTION TENGAH (post dalil, maks. 90 kata): 1 kalimat pembuka, terjemahan
+dalil di atas lengkap dalam tanda kutip beserta sumbernya, 2 kalimat
+penjelasan makna sederhana, ajakan "geser/lihat post aksi untuk amalan
+hari ini", lalu 5 hashtag.
+
+CAPTION KIRI (post hook, paling atas di feed, maks. 50 kata): kembangkan hook
+jadi 1-2 kalimat yang bikin penasaran, lalu "Lihat 2 post sebelumnya untuk
+dalil & amalannya 👉", 1 pertanyaan ringan untuk dijawab di komentar, lalu
+5 hashtag.
+
+Hashtag ketiga caption jangan sama persis. Jangan mengarang dalil tambahan
+di luar yang saya berikan, dan jangan menulis teks Arab.
 ```
 
 ---
@@ -396,14 +422,14 @@ Maksimal 150 kata. Jangan mengarang dalil tambahan di luar yang saya berikan.
    - di komputer: `python3 tools/split_triptych.py 01.png` → `01_1-kiri.jpg`, `01_2-tengah.jpg`, `01_3-kanan.jpg` (butuh `pip install pillow`).
    Hindari aplikasi grid maker biasa: aplikasi itu memotong sama rata, jadi garis putihnya ikut masuk ke tepi post.
 5. Buat 2 Reels dari gambar final ChatGPT yang sama (bagian 8). Simpan di galeri/draf.
-6. Siapkan caption ketiganya di Notes.
+6. **Caption** — tempel prompt 6e (tombol *Salin prompt caption*) ke ChatGPT/Claude: sekali jalan keluar 3 caption (kanan, tengah, kiri). Simpan di Notes.
 
 **Hari posting (Senin/Rabu/Jumat), setelah Subuh 05.00–06.00 WIB:**
 1. Upload urut **3-kanan → 2-tengah → 1-kiri**, jeda 1–3 menit.
-2. Caption: boleh sama untuk ketiganya, atau:
-   - Post kanan: caption lengkap + ajakan QRIS
-   - Post tengah: teks dalil + terjemah lengkap
-   - Post kiri (paling atas di feed): hook + "Lihat 2 post sebelumnya untuk dalil & ajakannya"
+2. Caption **berbeda tiap post** (hasil prompt 6e):
+   - Post kanan: CAPTION KANAN — lengkap + ajakan QRIS
+   - Post tengah: CAPTION TENGAH — terjemah dalil lengkap + sumber
+   - Post kiri (paling atas di feed): CAPTION KIRI — hook + "Lihat 2 post sebelumnya untuk dalil & amalannya"
 3. Bagikan post kiri ke Story + stiker link wadahqris.id.
 4. Posting versi utas di Threads (bagian 11b).
 
@@ -464,7 +490,7 @@ di link bio, lalu 5 hashtag. Jangan menambahkan dalil di luar: "[DALIL + SUMBER]
 
 ## 9. Caption & Hashtag
 
-**Template caption:**
+**Template caption post kanan** (post tengah & kiri punya format sendiri, lihat prompt 6e):
 ```
 [Hook 1 kalimat]
 
