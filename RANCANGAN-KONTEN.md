@@ -11,16 +11,17 @@
 
 | Hal | Aturan |
 |---|---|
-| Ukuran kanvas penuh | **3240 × 1440 px** (rasio 9:4), lalu dipotong jadi 3 |
+| Ukuran kanvas penuh | Panorama melebar, idealnya **3240 × 1440 px** (rasio 9:4), lalu dipotong jadi 3 |
 | Ukuran tiap post | **1080 × 1440 px** (rasio 3:4, sama dengan tampilan grid Instagram sekarang) |
 | Urutan upload | **Kanan dulu → Tengah → Kiri terakhir** (grid menampilkan post terbaru di kiri atas) |
 | Jeda antar upload | 1–3 menit, jangan dijadwalkan bersamaan |
 | Jumlah post | **Selalu kelipatan 3.** Satu post "nyasar" akan menggeser seluruh grid. Konten lepas (pengumuman, dll) taruh di **Story/Reels yang tidak dibagikan ke grid**, atau buat juga 3 post. |
 | Pin post | Hindari pin, atau pin **3 sekaligus** (1 triptych), karena pin juga menggeser grid |
 | Zona aman teks | Jangan taruh teks penting dalam jarak ±60 px dari garis potong, supaya huruf tidak terbelah |
-| Teks Arab | **Jangan dibuat oleh AI gambar** (sering salah/rusak). Tambahkan manual di Canva dengan copy-paste dari sumber Al-Qur'an/hadis terpercaya |
+| Pembagian kerja AI | **Gemini** membuat foto panorama tanpa teks. **ChatGPT** membuat dalil (teks Arab + terjemah + sumber) dan menempelkan semua tulisan ke foto itu. |
+| Teks Arab | Dibuat ChatGPT bersama dalilnya. Tetap **cocokkan lafaz & nomor sumber** sebelum posting (lihat catatan di bagian 5) |
 
-Potong kanvas otomatis: `python3 tools/split_triptych.py gambar.png` (lihat bagian 7), atau aplikasi pemotong grid di HP.
+Potong jadi 3: tab **Potong** di web (bisa di HP), atau `python3 tools/split_triptych.py gambar.png`. Keduanya otomatis mendeteksi garis putih pemisah panel kalau ChatGPT membuatnya — lihat bagian 7.
 
 ---
 
@@ -39,8 +40,8 @@ Setiap triptych punya **satu latar panorama yang menyambung**, dengan peran pane
 └──────────────┴──────────────┴──────────────┘
 ```
 
-- **Panel 1 – Hook**: 1 kalimat pendek, maks. 8 kata. Font serif besar (seperti post kamu sekarang).
-- **Panel 2 – Dalil**: teks Arab (ditambah manual) + terjemahan + sumber (QS/HR). Objek utama foto (lentera, mushaf, kurma) diletakkan di sini.
+- **Panel 1 – Hook**: 1 kalimat pendek, maks. 8 kata. Tulisan besar yang terbaca dari grid.
+- **Panel 2 – Dalil**: teks Arab + terjemahan + sumber (QS/HR), semuanya dibuat ChatGPT. Objek utama foto (lentera, mushaf, kurma) diletakkan di sini.
 - **Panel 3 – Aksi**: 1 langkah konkret hari ini + bar bawah "WADAHQRIS.ID · Berbagi kebaikan jadi lebih mudah dengan QRIS".
 
 Supaya tiap post juga enak dilihat **sendiri-sendiri** di feed (bukan cuma di grid), tiap panel wajib punya teks yang bisa berdiri sendiri, dan caption ketiganya boleh sama.
@@ -50,7 +51,7 @@ Supaya tiap post juga enak dilihat **sendiri-sendiri** di feed (bukan cuma di gr
 ## 3. Identitas Visual (biar grid konsisten)
 
 - **Palet**: hijau zaitun `#3F5A3C`, krem `#F3EBDD`, emas pagi `#D9A441`, coklat kayu `#7A5A3A`.
-- **Font**: judul serif (Playfair Display / Cormorant), aksen script (Great Vibes / Allura), isi sans (Poppins / Inter).
+- **Tulisan**: gaya tulisan tangan yang rapi dan membulat, coklat tua, dengan ornamen kecil (daun/hati) di atas judul dan garis tipis di bawahnya. Sumber dalil dalam label krem kecil. Gaya ini sudah tertulis di prompt ChatGPT (bagian 6d), jadi otomatis sama setiap pekan.
 - **Suasana foto**: golden hour / cahaya fajar, meja kayu, dedaunan di sudut, bokeh lembut.
 - **Elemen tetap**: ikon hati kecil di atas judul, garis pemisah dengan hati, bar hijau di bawah panel 3.
 - **Variasi suasana per seri** (opsional): pekan 1–4 fajar keemasan, pekan 5–6 biru subuh, pekan 7–8 hijau taman, pekan 9–10 krem minimalis. Dari jauh grid akan terlihat seperti "bab-bab".
@@ -290,9 +291,9 @@ Kalau sudah lancar 1–2 bulan, boleh naik ke 4–5x/pekan; lihat Insights untuk
 
 ## 6. Prompt Gambar AI
 
-Buat **satu gambar panorama** lalu potong jadi 3. Cocok untuk ChatGPT (gambar), Gemini, Midjourney, Ideogram, atau Leonardo.
+Alurnya dua langkah: **Gemini** membuat foto panorama polos (6a–6c) → **ChatGPT** menambahkan dalil dan semua tulisan (6d) → potong jadi 3.
 
-### 6a. Prompt Master (isi bagian `[...]`)
+### 6a. Prompt gambar untuk Gemini (isi bagian `[...]`)
 
 ```
 Ultra-wide panoramic photo, aspect ratio 9:4 (3240x1440), designed to be split
@@ -309,7 +310,7 @@ Photorealistic, high detail, soft shadows, no text, no letters, no watermark,
 no people's faces.
 ```
 
-Kata kunci penting: **"no text, no letters"** — teks ditambahkan sendiri di Canva agar rapi dan bebas typo (terutama teks Arab).
+Kata kunci penting: **"no text, no letters"** — Gemini cukup membuat fotonya; semua tulisan ditempel ChatGPT di langkah 6d.
 
 ### 6b. Contoh terisi (#01)
 
@@ -336,7 +337,42 @@ no people's faces.
 - Pekan 7–8: `fresh morning garden, dew on leaves, lush green tones`
 - Pekan 9–10: `minimalist cream background, soft diffused morning light, beige and ivory tones`
 
-### 6d. Prompt caption (untuk ChatGPT/Claude)
+### 6d. Prompt teks & dalil untuk ChatGPT (lampirkan foto dari Gemini)
+
+Buka ChatGPT, **lampirkan foto panorama dari Gemini**, lalu tempel prompt ini (tombol *Salin prompt teks GPT* di web sudah mengisi semua `[...]` dari kalender):
+
+```
+Aku lampirkan foto panorama untuk triptych Instagram akun dakwah @wadahqris.id.
+Tugasmu: siapkan dalilnya lalu tempelkan tulisan ke foto ini. Jangan ubah
+foto, objek, atau pencahayaannya.
+
+Tema: "[TEMA]"
+Dalil yang dipakai: [DALIL + SUMBER]
+
+Langkah 1 — tulis dulu di chat: lafaz Arab dalil tersebut (lengkap harakat,
+persis sesuai sumbernya), terjemahan singkat bahasa Indonesia (maks. 12 kata),
+dan label sumbernya. Jangan ganti dalil, jangan mengarang nomor ayat/hadis.
+Kalau lafaz lengkapnya panjang, ambil potongan inti yang memang ada di sumber.
+
+Langkah 2 — buat gambarnya: satu panorama melebar yang nanti aku potong jadi
+3 panel sama lebar (tiap panel rasio 3:4). Tanpa garis atau jarak putih antar
+panel. Semua tulisan harus berada di dalam panelnya dan jauh dari dua garis
+potong (1/3 dan 2/3 lebar gambar).
+- Panel KIRI (bagian atas): "[HOOK]"
+- Panel TENGAH (di atas objek utama): lafaz Arab dari langkah 1, di bawahnya
+  terjemahan dalam tanda kutip, lalu label sumber kecil.
+- Panel KANAN (bagian atas): "[AKSI]"
+- Pojok bawah panel kanan, kecil dan halus: wadahqris.id
+
+Gaya tulisan: tulisan tangan yang rapi dan membulat, coklat tua, besar dan
+mudah dibaca di HP. Ornamen kecil (daun atau hati) di atas tiap judul dan
+garis tipis melengkung di bawahnya. Label sumber dalam kotak krem membulat.
+Ejaan bahasa Indonesia dan teks Arab harus persis seperti langkah 1.
+```
+
+Setelah gambar jadi, **cocokkan teks Arab di gambar dengan lafaz yang ditulis di chat** (huruf yang hilang/terbalik paling sering terjadi di sini). Kalau ada yang salah, minta: *"Perbaiki hanya teks Arabnya, bagian lain jangan diubah."*
+
+### 6e. Prompt caption (untuk ChatGPT/Claude)
 
 ```
 Kamu adalah copywriter akun Instagram dakwah @wadahqris.id (donasi & berbagi via
@@ -353,12 +389,13 @@ Maksimal 150 kata. Jangan mengarang dalil tambahan di luar yang saya berikan.
 
 **Hari Minggu (±1,5 jam) — siapkan semua konten sepekan sekaligus:**
 1. Ambil 3 tema pekan itu dari kalender (Senin, Rabu, Jumat).
-2. Generate 3 gambar panorama dengan prompt master (bagian 6).
-3. Di Canva, buat desain **satu kanvas 3240×1440**, taruh gambar + semua teks (hook, dalil, ajakan, bar logo). Download sebagai PNG. Simpan desain pertama sebagai **template**, pekan berikutnya tinggal ganti gambar & teks.
-4. Potong jadi 3:
-   - di komputer: `python3 tools/split_triptych.py 01.png` → `01_1-kiri.jpg`, `01_2-tengah.jpg`, `01_3-kanan.jpg` (butuh `pip install pillow`), atau
-   - di HP: aplikasi pemotong grid (cari "grid maker" / "photo split" di App Store/Play Store), pilih potongan **3 kolom × 1 baris**.
-5. Buat 2 Reels dari panorama PNG yang sama (bagian 8). Simpan di galeri/draf.
+2. **Gemini** — generate 3 foto panorama polos dengan prompt 6a (tombol *Salin prompt gambar*).
+3. **ChatGPT** — lampirkan foto dari Gemini + prompt 6d (tombol *Salin prompt teks GPT*). ChatGPT membuat dalil dan menempelkan hook, dalil, dan ajakan. Cocokkan teks Arabnya, lalu download gambarnya.
+4. **Potong jadi 3** — potong **tepat di garis putih** pemisah panel (kalau ada; garisnya ikut dibuang), atau kalau tidak ada garis, di **1/3 dan 2/3 lebar gambar**. Tidak perlu mengukur sendiri:
+   - di HP: web → tab **Potong** → pilih gambar → simpan 3 hasilnya (`1-kiri`, `2-tengah`, `3-kanan`, masing-masing 1080×1440), atau
+   - di komputer: `python3 tools/split_triptych.py 01.png` → `01_1-kiri.jpg`, `01_2-tengah.jpg`, `01_3-kanan.jpg` (butuh `pip install pillow`).
+   Hindari aplikasi grid maker biasa: aplikasi itu memotong sama rata, jadi garis putihnya ikut masuk ke tepi post.
+5. Buat 2 Reels dari gambar final ChatGPT yang sama (bagian 8). Simpan di galeri/draf.
 6. Siapkan caption ketiganya di Notes.
 
 **Hari posting (Senin/Rabu/Jumat), setelah Subuh 05.00–06.00 WIB:**
@@ -382,10 +419,9 @@ Maksimal 150 kata. Jangan mengarang dalil tambahan di luar yang saya berikan.
 |---|---|---|
 | **CapCut** (utama) | Efek geser/zoom (keyframe), teks muncul, subtitle otomatis, audio | Hapus *ending clip* CapCut sebelum ekspor. Beberapa efek berlabel "Pro" berbayar — cukup pakai yang gratis. |
 | **Edits** (aplikasi resmi Instagram) | Alternatif CapCut, tanpa watermark, langsung kirim ke Instagram | Cocok kalau ingin semua dalam ekosistem Instagram. |
-| **Canva** | Menyusun teks & desain, animasi teks sederhana, ekspor MP4 | Sudah kamu pakai untuk triptych, jadi template & font tetap sama. |
 | Editor Reels bawaan Instagram | Tambah audio/teks cepat sebelum posting | Paling praktis, tapi fitur terbatas. |
 
-Rekomendasi: **Canva untuk desain → CapCut untuk gerakan & audio → upload di Instagram.**
+Rekomendasi: **gambar dari ChatGPT (sudah ada teksnya) → CapCut untuk gerakan & audio → upload di Instagram.**
 
 ### 8b. Ukuran & zona aman
 - **1080×1920 (9:16)**, durasi **7–15 detik**, 30 fps.
@@ -404,7 +440,7 @@ Rekomendasi: **Canva untuk desain → CapCut untuk gerakan & audio → upload di
 
 ### 8d. Langkah "Panorama Geser" di CapCut
 
-1. **Proyek baru** → impor PNG panorama (3240×1440, lengkap dengan teks).
+1. **Proyek baru** → impor gambar final dari ChatGPT (panorama utuh, lengkap dengan teks).
 2. Menu **Rasio → 9:16**.
 3. Perbesar gambar sampai **tingginya memenuhi layar** dan geser sehingga **panel kiri** yang terlihat. Atur durasi klip jadi **12 detik**.
 4. Tambah **keyframe** (ikon ◇+):
