@@ -476,14 +476,28 @@ Rekomendasi: **gambar dari ChatGPT (sudah ada teksnya) → CapCut untuk gerakan 
 5. Tambah teks penutup di detik 10–12: *"Sedekah subuh via QRIS — link di bio"*.
 6. **Audio** (pilih salah satu): suara alam (burung pagi, angin, gemericik air), voice-over, atau nasyid vokal tanpa alat musik — banyak audiens akun dakwah lebih nyaman dengan pilihan ini.
 7. Hapus *ending clip* → **Ekspor 1080p, 30 fps**.
-8. Di Instagram: pilih **sampul (cover)** yang ada judulnya, tulis caption singkat + hashtag, matikan "Tampilkan di grid profil".
+8. Di Instagram: pilih **sampul (cover)** yang ada judulnya, tulis caption dari prompt 8e (beda dari caption triptych), matikan "Tampilkan di grid profil".
 
 ### 8e. Prompt caption Reels
 
+Reels memakai ulang isi triptych, jadi caption-nya **dibuat beda** dari 3 caption triptych (prompt 6e): lebih pendek, fokus menarik penonton baru, tanpa rujukan ke "post sebelumnya". Tombol *Salin prompt Reels* di web sudah mengisi semua `[...]` dari kalender, jadi berlaku untuk semua triptych.
+
 ```
-Tulis caption Reels Instagram untuk akun dakwah @wadahqris.id, tema "[TEMA]".
-Maksimal 40 kata: 1 kalimat hook, 1 kalimat renungan, ajakan sedekah via QRIS
-di link bio, lalu 5 hashtag. Jangan menambahkan dalil di luar: "[DALIL + SUMBER]".
+Tulis 1 caption Reels Instagram untuk akun dakwah @wadahqris.id (donasi & berbagi
+via QRIS), bahasa Indonesia, hangat dan tidak menggurui. Reels ini dibuat dari
+triptych bertema: "[TEMA]".
+Dalil: [DALIL + SUMBER]
+Hook triptych: "[HOOK]"
+Aksi triptych: "[AKSI]"
+
+Penontonnya kebanyakan belum follow, jadi caption harus bisa dipahami tanpa
+melihat post lain. Jangan menyalin kalimat hook atau aksi di atas mentah-mentah;
+tulis ulang dengan kata-kata baru supaya beda dari caption triptych-nya.
+
+Maksimal 40 kata: 1 kalimat hook baru, 1 kalimat renungan dari dalil, aksi di
+atas sebagai ajakan kecil, ajakan sedekah via QRIS di link bio, lalu 5 hashtag
+(sertakan #sedekahsubuh dan #wadahqris). Jangan menambahkan dalil lain dan
+jangan menulis teks Arab.
 ```
 
 ---

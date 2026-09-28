@@ -488,7 +488,8 @@
     ];
   }
   const threadText = it => threadParts(it).join("\n\n———\n\n");
-  const reelsPrompt = (it, P) => P.reels.replace("[TEMA]", it.title).replace("[DALIL + SUMBER]", dalil(it));
+  // Bagian 8e: caption Reels, dibuat beda dari 3 caption triptych.
+  const reelsPrompt = (it, P) => fillTrip(P.reels, it);
 
   // ---------- Kartu triptych ----------
   function tripCard(it, P, { today = false, note = "" } = {}) {
@@ -606,6 +607,7 @@
           <li>${dow === 2 ? "Reels dari triptych Senin" : "Reels pengingat “besok Jumat” / dari triptych Rabu"} (format Panorama Geser, 12 detik).</li>
           <li>Matikan <b>“Tampilkan di grid profil”</b> supaya grid tidak bergeser.</li>
           <li>Pilih sampul yang ada judulnya.</li>
+          <li>Caption: tombol “Salin prompt Reels” di bawah (beda dari caption triptych).</li>
         </ol></div>`;
       html += tripCard(src, P, { note: "Bahan Reels hari ini:" });
       html += dow === 2
